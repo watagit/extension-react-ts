@@ -26,7 +26,7 @@ const Popup = () => {
           }
         }}
       >
-        個室
+        完全個室
       </Checkbox>
       <Checkbox
         isChecked={keywords.includes("創作")}
@@ -38,7 +38,31 @@ const Popup = () => {
           }
         }}
       >
-        創作
+        和風創作
+      </Checkbox>
+      <Checkbox
+        isChecked={keywords.includes("肉寿司")}
+        onChange={(event) => {
+          if (event.target.checked) {
+            addKeyword("肉寿司");
+          } else {
+            removeKeyword("肉寿司");
+          }
+        }}
+      >
+        肉寿司
+      </Checkbox>
+      <Checkbox
+        isChecked={keywords.includes("肉バル")}
+        onChange={(event) => {
+          if (event.target.checked) {
+            addKeyword("肉バル");
+          } else {
+            removeKeyword("肉バル");
+          }
+        }}
+      >
+        肉バル
       </Checkbox>
     </VStack>
   );
