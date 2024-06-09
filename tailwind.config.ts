@@ -1,11 +1,3 @@
-import type { Config } from 'tailwindcss';
+import { tailwindConfig } from './src/lib/tailwind-config';
 
-export default {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  theme: {
-    extend: {
-      // ...
-    },
-  },
-  plugins: [],
-} as Config;
+export default tailwindConfig
