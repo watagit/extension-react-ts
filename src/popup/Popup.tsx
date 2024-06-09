@@ -1,6 +1,7 @@
 import { Checkbox, VStack } from "@chakra-ui/react";
 import { getBucket } from "@extend-chrome/storage";
-import { useEffect, useState } from "react";
+
+import { useKeywords } from "~/store/useKeywords";
 
 document.body.className = "w-[20rem] h-[15rem]";
 
@@ -11,28 +12,7 @@ type Bucket = {
 const bucket = getBucket<Bucket>("my_bucket", "local");
 
 const Popup = () => {
-  const [keywords, setKeywords] = useState<string[]>([]);
-
-  useEffect(() => {
-    async () => {
-      const value = await bucket.get();
-      if (value.keywords) {
-        setKeywords(value.keywords);
-      }
-    };
-  }, []);
-
-  const addKeyword = (keyword: string) => {
-    const newKeywords = [...keywords, keyword];
-    bucket.set({ keywords: newKeywords });
-    setKeywords(newKeywords);
-  };
-
-  const removeKeyword = (keyword: string) => {
-    const newKeywords = keywords.filter((k) => k !== keyword);
-    bucket.set({ keywords: newKeywords });
-    setKeywords(newKeywords);
-  };
+  const { keywords, addKeyword, removeKeyword } = useKeywords();
 
   return (
     <VStack align="flex-start">
