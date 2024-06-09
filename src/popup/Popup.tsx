@@ -17,6 +17,12 @@ const Popup = () => {
     event: ChangeEvent<HTMLInputElement>,
     keyword: string,
   ) => {
+    // チェックボックスの状態変化と同時にContent側をリロードする
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs[0].id === undefined) return;
+      chrome.tabs.sendMessage(tabs[0].id, { action: "reload" })
+    })
+
     if (event.target.checked) {
       addKeyword(keyword);
     } else {
