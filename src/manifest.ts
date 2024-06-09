@@ -5,7 +5,7 @@ import { version } from "../package.json";
 // vite root folder: src, public folder: public (based on the project root)
 // @see ../vite.config.ts#L16
 
-const manifest = defineManifest(async (env) => ({
+const manifest = defineManifest(async () => ({
   manifest_version: 3,
   name: "Safe Dining Filter",
   description: "Browser Extension, TypeScript, React",
@@ -16,7 +16,7 @@ const manifest = defineManifest(async (env) => ({
   content_scripts: [
     {
       matches: ["http://*/*", "https://*/*", "file:///*"],
-      js: ["content/index.tsx"],
+      js: ["content/index.ts"],
     },
   ],
   host_permissions: ["<all_urls>"],
