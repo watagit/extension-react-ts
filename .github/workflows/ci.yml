@@ -1,57 +1,22 @@
-name: CI
+name: Code quality
 
 on:
-  push:
-    branches:
-      - main
-
   pull_request:
-    branches:
-      - main
+    paths:
+      - 'src/**'
 
 jobs:
-  build:
+  quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
-          cache: 'yarn'
-
+          node-version: '20'
       - name: Install dependencies
-        run: rm -rf node_modules && yarn install --frozen-lockfile
-
-      - name: Build
-        run: yarn build
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: rm -rf node_modules && yarn install --frozen-lockfile
-
-      - name: Lint
-        run: yarn lint
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: yarn
-
-      - name: Install dependencies
-        run: rm -rf node_modules && yarn install --frozen-lockfile
-
-      - name: Unit test
-        run: yarn ci:test
+        run: |
+          corepack enable && pnpm install
+      - name: Run Biome
+        run: pnpm biome ci ./src
