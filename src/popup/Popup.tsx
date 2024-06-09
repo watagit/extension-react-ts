@@ -1,7 +1,34 @@
-const Popup = () => {
-  document.body.className = "w-[30rem] h-[15rem]";
+import { Checkbox, VStack } from "@chakra-ui/react";
+import { useState } from "react";
 
-  return <h1>Safe Dining Filter</h1>;
+document.body.className = "w-[20rem] h-[15rem]";
+
+const Popup = () => {
+  const [checkedKeywords, setCheckedKeywords] = useState<boolean[]>([
+    true,
+    false,
+  ]);
+
+  return (
+    <VStack align="flex-start">
+      <Checkbox
+        isChecked={checkedKeywords[0]}
+        onChange={(event) =>
+          setCheckedKeywords([event.target.checked, checkedKeywords[1]])
+        }
+      >
+        個室
+      </Checkbox>
+      <Checkbox
+        isChecked={checkedKeywords[1]}
+        onChange={(event) =>
+          setCheckedKeywords([checkedKeywords[0], event.target.checked])
+        }
+      >
+        創作
+      </Checkbox>
+    </VStack>
+  );
 };
 
 export default Popup;
