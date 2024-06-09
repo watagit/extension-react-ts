@@ -1,18 +1,17 @@
 import { Checkbox, VStack } from "@chakra-ui/react";
-import { getBucket } from "@extend-chrome/storage";
+import { useEffect } from "react";
 
 import { useKeywords } from "~/store/useKeywords";
 
 document.body.className = "w-[20rem] h-[15rem]";
 
-type Bucket = {
-  keywords: string[];
-};
-
-const bucket = getBucket<Bucket>("my_bucket", "local");
-
 const Popup = () => {
-  const { keywords, addKeyword, removeKeyword } = useKeywords();
+  const { keywords, loadKeywords, addKeyword, removeKeyword } = useKeywords();
+
+  useEffect(() => {
+    // NOTE: ここでロードしないとチェックボックスに初期値が入らない
+    loadKeywords();
+  }, []);
 
   return (
     <VStack align="flex-start">

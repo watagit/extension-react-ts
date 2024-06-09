@@ -1,5 +1,5 @@
 import { getBucket } from "@extend-chrome/storage";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 type Bucket = {
   keywords: string[];
@@ -10,13 +10,11 @@ const bucket = getBucket<Bucket>("my_bucket", "local");
 export const useKeywords = () => {
   const [keywords, setKeywords] = useState<string[]>([]);
 
-  useEffect(() => {
-    async () => {
-      const value = await bucket.get();
-      if (value.keywords) {
-        setKeywords(value.keywords);
-      }
-    };
+  const loadKeywords = useCallback(async () => {
+    const value = await bucket.get();
+    if (value.keywords) {
+      setKeywords(value.keywords);
+    }
   }, []);
 
   const addKeyword = (keyword: string) => {
@@ -31,5 +29,5 @@ export const useKeywords = () => {
     setKeywords(newKeywords);
   };
 
-  return { keywords, addKeyword, removeKeyword };
+  return { keywords, loadKeywords, addKeyword, removeKeyword };
 };
