@@ -1,12 +1,12 @@
 import 'webextension-polyfill';
 import 'construct-style-sheets-polyfill';
+import { debounce } from 'lodash-es';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { debounce } from 'lodash-es';
-import { twind, config, cssom, observe, stringify } from './twind';
 import { proxyStore } from '../app/proxyStore';
 import Content from './Content';
+import { config, cssom, observe, stringify, twind } from './twind';
 
 proxyStore.ready().then(() => {
   const contentRoot = document.createElement('div');

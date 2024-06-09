@@ -7,7 +7,7 @@ import { version } from '../package.json';
 
 const manifest = defineManifest(async (env) => ({
   manifest_version: 3,
-  name: `Safe Dining Filter`,
+  name: 'Safe Dining Filter',
   description: 'Browser Extension, TypeScript, React',
   version,
   background: {

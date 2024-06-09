@@ -1,15 +1,15 @@
 import { wrapStore } from '@eduardoac-skimlinks/webext-redux';
-import { combineReducers, configureStore, type Action, type ThunkAction } from '@reduxjs/toolkit';
+import { type Action, type ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { localStorage } from 'redux-persist-webextension-storage';
 import {
   FLUSH,
   PAUSE,
   PERSIST,
-  persistReducer,
-  persistStore,
   PURGE,
   REGISTER,
   REHYDRATE,
+  persistReducer,
+  persistStore,
 } from 'reduxjs-toolkit-persist';
 import type { WebStorage } from 'reduxjs-toolkit-persist/lib/types';
 

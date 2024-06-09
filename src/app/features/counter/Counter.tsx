@@ -22,6 +22,7 @@ export function Counter() {
     <div className="p-2">
       <div className="flex items-center justify-center mb-4">
         <button
+          type="button" // Add type prop with value "button"
           className="ml-1 mr-2 px-3 text-2xl outline-none border-2 border-solid border-transparent text-purple-500 pb-1 cursor-pointer bg-purple-800 bg-opacity-10 hover:bg-opacity-20 rounded-[2px]"
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
@@ -30,6 +31,7 @@ export function Counter() {
         </button>
         <span className="text-7xl px-4 mt-0.5 font-mono">{count}</span>
         <button
+          type="button" // Add type prop with value "button"
           className="ml-1 mr-2 px-3 text-2xl outline-none border-2 border-solid border-transparent text-purple-500 pb-1 cursor-pointer bg-purple-800 bg-opacity-10 hover:bg-opacity-20 rounded-[2px]"
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
@@ -45,18 +47,21 @@ export function Counter() {
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
+          type="button"
           className="ml-1 mr-2 px-3 pb-1 text-2xl outline-none border-2 border-solid border-transparent text-purple-500 bg-purple-800 bg-opacity-10 hover:bg-opacity-20 rounded-[2px]"
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
         </button>
         <button
+          type="button"
           className="ml-1 mr-2 px-3 pb-1 text-2xl outline-none border-2 border-solid border-transparent text-purple-500 bg-purple-800 bg-opacity-10 hover:bg-opacity-20 rounded-[2px]"
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
         </button>
         <button
+          type="button"
           className="ml-1 mr-2 px-3 pb-1 text-2xl outline-none border-2 border-solid border-transparent text-purple-500 bg-purple-800 bg-opacity-10 hover:bg-opacity-20 rounded-[2px]"
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
