@@ -1,15 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import store from '../app/store';
-import Content from './Content';
+import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../app/store";
+import Content from "./Content";
 
-describe('content', () => {
-  test('renders content example', () => {
+describe("content", () => {
+  test("renders content example", () => {
     render(
       <Provider store={store}>
         <Content />
-      </Provider>
+      </Provider>,
     );
-    expect(screen.getByText('Content Counter')).toBeInTheDocument();
+    expect(screen.getByText("Content Counter")).toBeInTheDocument();
   });
 });

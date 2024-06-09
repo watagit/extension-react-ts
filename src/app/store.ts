@@ -1,6 +1,11 @@
-import { wrapStore } from '@eduardoac-skimlinks/webext-redux';
-import { type Action, type ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit';
-import { localStorage } from 'redux-persist-webextension-storage';
+import { wrapStore } from "@eduardoac-skimlinks/webext-redux";
+import {
+  type Action,
+  type ThunkAction,
+  combineReducers,
+  configureStore,
+} from "@reduxjs/toolkit";
+import { localStorage } from "redux-persist-webextension-storage";
 import {
   FLUSH,
   PAUSE,
@@ -10,13 +15,13 @@ import {
   REHYDRATE,
   persistReducer,
   persistStore,
-} from 'reduxjs-toolkit-persist';
-import type { WebStorage } from 'reduxjs-toolkit-persist/lib/types';
+} from "reduxjs-toolkit-persist";
+import type { WebStorage } from "reduxjs-toolkit-persist/lib/types";
 
-import counterReducer from './features/counter/counterSlice';
+import counterReducer from "./features/counter/counterSlice";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage: localStorage as WebStorage,
 };
 
@@ -24,7 +29,10 @@ const reducers = combineReducers({
   counter: counterReducer,
 });
 
-const persistedReducer: typeof reducers = persistReducer(persistConfig, reducers);
+const persistedReducer: typeof reducers = persistReducer(
+  persistConfig,
+  reducers,
+);
 const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
