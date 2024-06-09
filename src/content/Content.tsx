@@ -14,9 +14,9 @@ export const Content = () => {
     // ポップアップからのリロード指示を受け取る
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       if (request.action === "reload") {
-        location.reload()
+        location.reload();
       }
-    })
+    });
   }, []);
 
   const restaurantListElement = document.querySelectorAll(
