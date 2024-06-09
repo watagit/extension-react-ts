@@ -1,6 +1,16 @@
+import { useEffect } from "react";
+import { useKeywords } from "~/store/useKeywords";
+
 export const Content = () => {
+  const { keywords, loadKeywords } = useKeywords();
+
+  // 初期では食べログのみに対応
   const isTabelog = window.location.hostname === "tabelog.com";
   if (!isTabelog) return <></>;
+
+  useEffect(() => {
+    loadKeywords();
+  }, []);
 
   const restaurantListElement = document.querySelectorAll(
     ".list-rst__rst-name a",
@@ -16,7 +26,13 @@ export const Content = () => {
       break;
     }
 
-    if (!restaurantElement.textContent.includes("個室")) continue;
+    // キーワードのいずれも店名に含まれていない場合は次の店舗へ
+    if (
+      !keywords.some((keyword) =>
+        restaurantElement.textContent?.includes(keyword),
+      )
+    )
+      continue;
 
     const parentElement = restaurantElement.closest(".list-rst");
     if (parentElement === null) {
