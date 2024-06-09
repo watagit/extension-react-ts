@@ -1,147 +1,59 @@
-<div align="center">
-  <br>
- <img src="https://raw.githubusercontent.com/sinanbekar/browser-extension-react-typescript-starter/main/public/images/extension_128.png" alt="Browser Extension React & TypeScript Starter" width="128">
-  <br>
-  <h2>
-    Browser Extension <br>
-    React & TypeScript Starter
-    <br>
-  </h2>
-</div>
+# Safe Dining Filter
 
-<p align="center">A cross-platform (Chrome, Firefox, Edge, Opera, Brave) web browser extension (Manifest V3 and Manifest V2) starter kit with hot reload support, built with React, Typescript, Redux, Vite, ESLint, Prettier, TailwindCSS, Jest and more! </p>
-<hr />
+Safe Dining Filter は、食べログなどのグルメサイト上に存在する地雷居酒屋を非表示にする Chrome 拡張機能です。
 
-<div align="center" >
-  <a href="https://github.com/sinanbekar/browser-extension-react-typescript-starter/actions">
-    <img src="https://github.com/sinanbekar/browser-extension-react-typescript-starter/actions/workflows/ci.yml/badge.svg" alt="CI">
-  </a>
-    &nbsp;
-  <a>
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome">
-  </a>
-    &nbsp;
-  <a href="https://github.com/sinanbekar/browser-extension-react-typescript-starter/blob/main/LICENSE">
-    <img src="https://img.shields.io/apm/l/atomic-design-ui.svg" alt="MIT License">
-  </a>
+# インストール手順
 
-</div>
+(注) Safe Dining Filter は、2024 年 6 月 9 日時点で正式リリースされていません。ここでは、Chrome 拡張機能のデベロッパーモードを使用したインストール手順を説明します。
 
-<p align="center">
-  <a href="#features">Features</a> ·
-  <a href="#quick-start">Quick Start</a> ·
-  <a href="#important-notes">Important Notes</a> ·
-  <a href="#license">License</a>
-</p>
+## ソースコードのダウンロード
 
-> 🚀 **NEW** (experimental) Zustand for state management instead Redux, with [`webext-zustand`](https://github.com/sinanbekar/webext-zustand) package. You can try it now on the branch [`experimental-zustand`](https://github.com/sinanbekar/browser-extension-react-typescript-starter/tree/experimental-zustand)
+拡張機能の本体であるソースコードをローカルマシンにダウンロードします。
 
-## Features
+1. 画面右の「Releases」をクリックします。
 
-- **Instant HMR** (hot reload)[^1]
-- Write once run on any browser
-- Global Redux support with persist option. Effortless communication between content, background, popup, options, and more pages.
-- Provides a basic content example and popup, options, and welcome pages with all React
-- Latest Manifest V3 support
-- Manifest V2 support (beta)
-- Dynamic manifest.json
-- Includes ESLint configured to work with TypeScript and Prettier
-- Includes tests with Jest
+![alt text](/readme-image/releases.png)
 
-#### Built with
+2. 「safe-dining-filter.zip」をクリックします。
 
-- React
-- TypeScript
-- Redux (toolkit and redux-persist)
-- TailwindCSS
-- Vite
-- Jest
-- ESLint
-- Prettier
-- simple-git-hooks (lightweight husky alternative)
-- nano-staged
+![alt text](/readme-image/zip.png)
 
-[^1]: While it is fully supported and stable in most cases, hard reloading is rarely recommended.
+3. ローカルマシンに safe-dining-filter.zip がダウンロードされるので、解凍します。
 
-## Browser Support
+## Chrome の拡張機能ページへアクセス
 
-| [![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](/) | [![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](/) | [![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png)](/) | [![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png)](/) | [![Brave](https://raw.github.com/alrra/browser-logos/master/src/brave/brave_48x48.png)](/) |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| ✔                                                                                             | ✔ (Beta)                                                                                         | ✔                                                                                       | ✔                                                                                          | ✔                                                                                          |
+Google Chrome を開き、chrome://extensions/ にアクセスします。
 
-## Quick Start
+## デベロッパーモードの有効化
 
-Ensure you have
+1. 右上のトグルをオンにして、デベロッパーモードを有効化します。
 
-- [Node.js](https://nodejs.org) 16 or later installed
-- [Yarn](https://yarnpkg.com) installed
+![alt text](/readme-image/developer-mode.png)
 
-### Use the Template
+## 拡張機能の読み込み
 
-#### GitHub Template
+2. 「パッケージ化されていない拡張機能を読み込む」をクリックします。
 
-[Create a repo from this template on GitHub](https://github.com/sinanbekar/browser-extension-react-typescript-starter/generate).
+![alt text](/readme-image/import-unpackaged-extension.png)
 
-**_or_**
+3. 先ほど解凍したディレクトリを選択します。正常にインストールされている場合、拡張機能のリストに Safe Dining Filter が表示されます。
 
-#### Clone to local
+![alt text](/readme-image/extension-view.png)
 
-If you prefer to do it manually with the cleaner git history
+# 使用方法
 
-> **Note** If you don't have yarn installed, run: npm install -g yarn
+インストール後、食べログで店名に「個室」と含まれるお店が自動的に非表示になります。
 
-```bash
-npx degit sinanbekar/browser-extension-react-typescript-starter my-web-extension
-cd my-web-extension
-git init
-```
+| before                                | after                                |
+| ------------------------------------- | ------------------------------------ |
+| ![alt text](/readme-image/before.png) | ![alt text](/readme-image/after.png) |
 
-Then run the following:
+# ロードマップ
 
-- `yarn install` to install dependencies.
-- `yarn dev` to start the development server.
-- `yarn build` to build an unpacked extension.
+今後は以下の機能追加を予定しています。
 
-- **Load extension in Chrome (Chromium, Manifest V3)**
+- 食べログ以外のグルメサイトへの対応
+- 拡張機能のメニュー上でフィルタリングの有効無効を切り替える機能
+- キーワードを自由に設定できる機能
 
-  - Go to the browser address bar and type `chrome://extensions`
-  - Check the `Developer Mode` button to enable it.
-  - Click on the `Load Unpacked Extension` button.
-  - Select your `dist` folder in the project root.
-
-- **Load extension in Firefox (Manifest V2)**
-
-  - Go to the browser address bar and type `about://debugger`
-  - Click on the `Load Temporary Add-on` button.
-  - Select your `dist-firefox-v2` folder in the project root.
-
-### Available Commands
-
-- `yarn clean` to remove dist folder. `dev` and `build` commands call this command.
-- `yarn format` to fix code with eslint and prettier.
-- `yarn lint` to call ESLint and Prettier.
-- `yarn test` for testing.
-
-### Redux
-
-You can use redux (redux-toolkit) as state manager between popup, background, content and custom pages. Read the documentation for more.
-
-#### [@eduardoac-skimlinks/webext-redux](https://github.com/eduardoacskimlinks/webext-redux)
-
-### Bundling
-
-#### [@crxjs/vite-plugin](https://github.com/crxjs/chrome-extension-tools)
-
-> **Note** This plugin powers the development side of this starter.
->
-> docs: https://crxjs.dev/vite-plugin
->
-> Special thanks to [@jacksteamdev](https://github.com/jacksteamdev) and contributors for this amazing plugin.
-
-## Contributing
-
-This repository is following the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
-
-## License
-
-MIT © [Sinan Bekar](https://sinan.engineer)
+詳しくは[ロードマップ](https://github.com/users/watagit/projects/1/views/1)を参照してください。
