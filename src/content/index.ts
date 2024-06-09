@@ -1,9 +1,9 @@
 const main = () => {
-  const restaurantListElement = document.querySelectorAll(".list-rst__rst-name a");
-
   // 初期段階では食べログのみ対応する
   const isTabelog = window.location.hostname === "tabelog.com";
   if (!isTabelog) return;
+
+  const restaurantListElement = document.querySelectorAll(".list-rst__rst-name a");
 
   if (restaurantListElement === null) {
     console.log("店舗一覧を表す要素が見つかりません");
