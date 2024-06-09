@@ -1,5 +1,5 @@
 import { Checkbox, VStack } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { type ChangeEvent, useEffect } from "react";
 
 import { useKeywords } from "~/store/useKeywords";
 
@@ -13,54 +13,41 @@ const Popup = () => {
     loadKeywords();
   }, []);
 
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    keyword: string,
+  ) => {
+    if (event.target.checked) {
+      addKeyword(keyword);
+    } else {
+      removeKeyword(keyword);
+    }
+  };
+
   return (
     <VStack align="flex-start">
       <p>{String(keywords)}</p>
       <Checkbox
-        isChecked={keywords.includes("個室")}
-        onChange={(event) => {
-          if (event.target.checked) {
-            addKeyword("個室");
-          } else {
-            removeKeyword("個室");
-          }
-        }}
+        isChecked={keywords.includes("完全個室")}
+        onChange={(event) => handleChange(event, "完全個室")}
       >
         完全個室
       </Checkbox>
       <Checkbox
-        isChecked={keywords.includes("創作")}
-        onChange={(event) => {
-          if (event.target.checked) {
-            addKeyword("創作");
-          } else {
-            removeKeyword("創作");
-          }
-        }}
+        isChecked={keywords.includes("和風創作")}
+        onChange={(event) => handleChange(event, "和風創作")}
       >
         和風創作
       </Checkbox>
       <Checkbox
         isChecked={keywords.includes("肉寿司")}
-        onChange={(event) => {
-          if (event.target.checked) {
-            addKeyword("肉寿司");
-          } else {
-            removeKeyword("肉寿司");
-          }
-        }}
+        onChange={(event) => handleChange(event, "肉寿司")}
       >
         肉寿司
       </Checkbox>
       <Checkbox
         isChecked={keywords.includes("肉バル")}
-        onChange={(event) => {
-          if (event.target.checked) {
-            addKeyword("肉バル");
-          } else {
-            removeKeyword("肉バル");
-          }
-        }}
+        onChange={(event) => handleChange(event, "肉バル")}
       >
         肉バル
       </Checkbox>
