@@ -1,6 +1,6 @@
-export const render = () => {
+export const Content = () => {
   const isTabelog = window.location.hostname === "tabelog.com";
-  if (!isTabelog) return;
+  if (!isTabelog) return <></>;
 
   const restaurantListElement = document.querySelectorAll(
     ".list-rst__rst-name a",
@@ -29,7 +29,5 @@ export const render = () => {
     (parentElement as HTMLElement).style.display = "none";
   }
 
-  return (
-    <></>
-  )
-}
+  return <></>;
+};
