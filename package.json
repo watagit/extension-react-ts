@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "packageManager": "pnpm@9.2.0",
   "scripts": {
     "dev": "run-s clean && vite",
     "build": "run-s clean && tsc && vite build && run-s firefox-mv2-build",
