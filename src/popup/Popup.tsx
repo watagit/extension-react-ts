@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { type ChangeEvent, useEffect } from "react";
 
 import { useKeywords } from "~/store/useKeywords";
@@ -30,7 +31,11 @@ const Popup = () => {
     }
   };
 
-  return <KeywordSelector keywords={keywords} onChange={handleChange} />;
+  return (
+    <Box p={4}>
+      <KeywordSelector keywords={keywords} onChange={handleChange} />
+    </Box>
+  );
 };
 
 export default Popup;

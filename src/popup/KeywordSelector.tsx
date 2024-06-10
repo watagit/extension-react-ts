@@ -8,7 +8,7 @@ type Props = {
 
 export const KeywordSelector: FC<Props> = ({ keywords, onChange }) => {
   return (
-    <VStack align="flex-start" p={4}>
+    <VStack align="flex-start">
       <Checkbox
         isChecked={keywords.includes("完全個室")}
         onChange={(event) => onChange(event, "完全個室")}
