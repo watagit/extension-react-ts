@@ -1,5 +1,7 @@
-import { Checkbox, VStack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { type ChangeEvent, useEffect } from "react";
+
+import { KeywordSelector } from "./KeywordSelector";
 
 import { useKeywords } from "~/store/useKeywords";
 
@@ -31,32 +33,9 @@ const Popup = () => {
   };
 
   return (
-    <VStack align="flex-start">
-      <Checkbox
-        isChecked={keywords.includes("完全個室")}
-        onChange={(event) => handleChange(event, "完全個室")}
-      >
-        完全個室
-      </Checkbox>
-      <Checkbox
-        isChecked={keywords.includes("和風創作")}
-        onChange={(event) => handleChange(event, "和風創作")}
-      >
-        和風創作
-      </Checkbox>
-      <Checkbox
-        isChecked={keywords.includes("肉寿司")}
-        onChange={(event) => handleChange(event, "肉寿司")}
-      >
-        肉寿司
-      </Checkbox>
-      <Checkbox
-        isChecked={keywords.includes("肉バル")}
-        onChange={(event) => handleChange(event, "肉バル")}
-      >
-        肉バル
-      </Checkbox>
-    </VStack>
+    <Box p={4}>
+      <KeywordSelector keywords={keywords} onChange={handleChange} />
+    </Box>
   );
 };
 
