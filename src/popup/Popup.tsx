@@ -1,8 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import { type ChangeEvent, useEffect } from "react";
 
-import { useKeywords } from "~/store/useKeywords";
 import { KeywordSelector } from "./KeywordSelector";
+
+import { useKeywords } from "~/store/useKeywords";
 
 document.body.className = "w-[20rem] h-[15rem]";
 
