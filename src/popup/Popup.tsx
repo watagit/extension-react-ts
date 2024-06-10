@@ -31,7 +31,7 @@ const Popup = () => {
   };
 
   return (
-    <VStack align="flex-start">
+    <VStack align="flex-start" p={4}>
       <Checkbox
         isChecked={keywords.includes("完全個室")}
         onChange={(event) => handleChange(event, "完全個室")}
